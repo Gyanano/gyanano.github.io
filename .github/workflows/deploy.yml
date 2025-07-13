@@ -45,17 +45,25 @@ jobs:
         run: npm ci
         
       - name: Build with Next.js
-        run: npm run build
+        run: |
+          echo "Starting Next.js build..."
+          npm run build
+          echo "Build completed, checking output..."
+          
+          if [ ! -d "out" ]; then
+            echo "ERROR: out directory was not created!"
+            echo "Current directory contents:"
+            ls -la
+            echo "Checking for .next directory:"
+            ls -la .next/ || echo ".next directory not found"
+            exit 1
+          fi
+          
+          echo "Build successful - out directory exists"
+          ls -la out/
         env:
           NODE_ENV: production
           GITHUB_PAGES: true
-        
-      - name: List build output (debug)
-        run: |
-          echo "Contents of current directory:"
-          ls -la
-          echo "Contents of out directory (if exists):"
-          ls -la out/ || echo "out directory not found"
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
