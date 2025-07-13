@@ -46,6 +46,16 @@ jobs:
         
       - name: Build with Next.js
         run: npm run build
+        env:
+          NODE_ENV: production
+          GITHUB_PAGES: true
+        
+      - name: List build output (debug)
+        run: |
+          echo "Contents of current directory:"
+          ls -la
+          echo "Contents of out directory (if exists):"
+          ls -la out/ || echo "out directory not found"
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
