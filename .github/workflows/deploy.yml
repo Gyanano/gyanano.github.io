@@ -47,10 +47,10 @@ jobs:
       - name: Build with Next.js
         run: |
           echo "Starting Next.js build..."
+          echo "Checking config files before build:"
+          ls -la next.config.*
           npm run build
-          echo "Build completed, forcing export..."
-          npx next export
-          echo "Export completed, checking output..."
+          echo "Build completed, checking output..."
           
           if [ ! -d "out" ]; then
             echo "ERROR: out directory was not created!"

@@ -1,8 +1,7 @@
-import type { NextConfig } from "next";
-
 const isGitHubPages = process.env.GITHUB_PAGES === 'true' || process.env.NODE_ENV === 'production';
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
@@ -12,4 +11,4 @@ const nextConfig: NextConfig = {
   assetPrefix: isGitHubPages ? '/gyanano_website/' : '',
 };
 
-export default nextConfig;
+module.exports = nextConfig;
