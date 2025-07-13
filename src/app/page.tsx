@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,10 +66,15 @@ export default function Home() {
       </div>
 
       {/* Main content */}
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
+      <div id="home">
+        <Hero />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="projects">
+        <Projects />
+      </div>
     </div>
   );
 }
