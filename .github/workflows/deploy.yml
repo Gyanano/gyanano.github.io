@@ -48,7 +48,9 @@ jobs:
         run: |
           echo "Starting Next.js build..."
           npm run build
-          echo "Build completed, checking output..."
+          echo "Build completed, forcing export..."
+          npx next export
+          echo "Export completed, checking output..."
           
           if [ ! -d "out" ]; then
             echo "ERROR: out directory was not created!"
